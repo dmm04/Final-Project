@@ -33,3 +33,29 @@ a {
     background-position: center;
     background-repeat: no-repeat;
 }
+
+.hero-content {
+    background: rgba(0,0,0,0.6);
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.cta-button {
+    display: inline-block;
+    padding: 10px 20px;
+    background: #007bff;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+.featured-products {
+    padding: 40px;
+    background-color: white;
+}
+
+.product-grid {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
