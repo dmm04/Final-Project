@@ -59,3 +59,39 @@ a {
     justify-content: center;
     flex-wrap: wrap;
 }
+
+.product-item {
+    background: white;
+    border: 1px solid;
+    border-radius: 10px;
+    padding: 20px;
+    text-align: center;
+    transition: box-shadow 0.3s ease;
+}
+
+.product-item:hover {
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+.product-item img{
+    max-width: 100%;
+    border-radius: 10px;
+}
+
+.button {
+    display: inline-block;
+    padding: 8px 15px;
+    border-radius: 5px;
+    color: white;
+    font-size: 10px;
+    transition: background 0.3s ease;
+}
+
+.testimonials {
+    padding: 40px;
+    background: white;
+}
+
+.testimonials h2 {
+    text-align: center;
+}
