@@ -7,11 +7,15 @@
 <body>
     <!--Hero Section -->
     <section class="hero" style="background-image: url('basket.jpg');">
-    
-    
-    <a href="shop.html">Shop Now</a>
-        
-            
+        <nav class="hero-nav">
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="shop.html">Shop</a>
+        </nav>
+        <div class="hero-content">
+            <h1> Welcome to Jamit! Baskets</h1>
+            <p>Unique Handmade Baskets for Every Occasion</p>
+            <a href="shop.html" class="cta-button">Shop Now</a>
         </div>
     </section>
 
