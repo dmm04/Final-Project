@@ -8,14 +8,14 @@
     <div class="hero">
         <h1>Welcome to Jamit! Baskets</h1>
         <p>Explore our beatifully handcrafted baskets designed with care and creativity. Find the perfect basket for any occasion</p>
-        <nav class="nav">
+        <nav>
             <a href="#home">Home</a>
             <a href="#shop">Shop</a>
             <a href="#about">About</a>
         </nav>
         <button class ="cta-button">Shop Now</button>
     </div>    
-    <img src = "logo.jpg" alt="Our Logo" style="justify-content: center; display: block; margin: auto;">
+    <img src = "logo.jpg" alt="Our Logo" style="justify-content: center; display: block; margin: auto; ">
 
     <!--Featured Products-->
     <section class="featured-products">
