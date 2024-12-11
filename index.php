@@ -8,8 +8,7 @@
     <!--Hero Section -->
     <section class="hero" style="background-image: url('basket.jpg');">
         
-        <div class="hero-content">
-            <h1>Welcome to Jamit! Baskets</h1>
+        
             
         </div>
     </section>
@@ -27,13 +26,13 @@
             <div class="product-item">
                 <img src="basket1.jpg" alt="Basket 1">
                 <h3>Basket 1</h3>
-                <p>$25.00</p>
+                <p>$30.00</p>
                 <a href="#" class="button"> View Details </a>
             </div>
             <div class="product-item">
                 <img src="basket1.jpg" alt="Basket 1">
                 <h3>Basket 1</h3>
-                <p>$25.00</p>
+                <p>$35.00</p>
                 <a href="#" class="button"> View Details </a>
             </div>
         </div>

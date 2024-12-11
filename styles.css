@@ -9,12 +9,12 @@ body {
 
 h1, h2, h3 {
     margin:0;
-    padding: 10px;
+    padding: 0.5em 0;
     color: #444;
 }
 
 p {
-    margin: 30px;
+    margin: 0.5em 0;
 }
 
 a {
@@ -27,7 +27,7 @@ a {
     justify-content: center;
     align-items: center;
     text-align: center;
-    height: 40px;
+    height: 70px;
     color: white;
     background-size:cover;
     background-position: center;
@@ -58,7 +58,9 @@ a {
 }
 
 .featured-products h2{
-    text-align
+    text-align:center;
+    color: #007bff;
+    margin-bottom: 20px;
 }
 
 .product-grid {
@@ -93,6 +95,10 @@ a {
     color: white;
     font-size: 10px;
     transition: background 0.3s ease;
+}
+
+.button:hover {
+    background: #218838;
 }
 
 .testimonials {
