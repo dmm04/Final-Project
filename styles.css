@@ -48,9 +48,17 @@ a {
     font-weight: bold;
 }
 
+.cta-button:hover {
+    background: #0056b3;
+}
+
 .featured-products {
     padding: 40px;
     background-color: white;
+}
+
+.featured-products h2{
+    text-align
 }
 
 .product-grid {

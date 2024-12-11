@@ -7,10 +7,10 @@
 <body>
     <!--Hero Section -->
     <section class="hero" style="background-image: url('basket.jpg');">
+        
         <div class="hero-content">
             <h1>Welcome to Jamit! Baskets</h1>
-            <p>Unique Handmade Baskets For Every Occasion</p>
-            <a href="shop.html" class="cta-button">Shop Now</a>
+            
         </div>
     </section>
 
@@ -47,6 +47,19 @@
                 <p>"The baskets are beautifully crafted and perfect for gifting!"</p>
                 <p> - Sarah J.</p>
             </div>
+            <div class="testimonial-item">
+                <p>"Excellent quality and speedy delivery. Highly recommend!"</p>
+                <p> - Michael T.</p>
+            </div>
+        </div>
+    </section>
+
+    <!--Footer-->
+    <footer>
+        <p>&copy; 2024 Jamit Baskets. All rights reserved. </p>
+    </footer>
+</body>
+</html>
     
 
             
