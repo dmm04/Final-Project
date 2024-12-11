@@ -5,19 +5,24 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <!--Hero Section -->
-    <section class="hero" style="background-image: url('basket.jpg');">
-        <nav class="hero-nav">
-            <a href="index.html">Home</a>
-            <a href="about.html">About</a>
-            <a href="shop.html">Shop</a>
+    <!-- Hero Section -->
+    <section class="hero">
+        <nav class="navbar">
+            <div class="logo">Jamit! Baskets</div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="shop.html">Shop</a></li>
+            </ul>
         </nav>
         <div class="hero-content">
-            <h1> Welcome to Jamit! Baskets</h1>
+            <h1>Welcome to Jamit! Baskets</h1>
             <p>Unique Handmade Baskets for Every Occasion</p>
             <a href="shop.html" class="cta-button">Shop Now</a>
         </div>
     </section>
+
+    <img src = "logo.jpg">
 
     <!--Featured Products-->
     <section class="featured-products">

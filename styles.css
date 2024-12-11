@@ -13,6 +13,11 @@ h1, h2, h3 {
     color: #444;
 }
 
+img{
+    justify-content:center;
+    align-items:  center;
+}
+
 p {
     margin: 0.5em 0;
 }
@@ -25,7 +30,7 @@ a {
 .hero {
     padding: 10px;
     display: flex;
-    justify-content: left;
+    justify-content: center;
     align-items: center;
     text-align: center;
     height: 100px;
