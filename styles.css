@@ -23,11 +23,12 @@ a {
 }
 
 .hero {
+    padding: 10px;
     display: flex;
-    justify-content: center;
+    justify-content: left;
     align-items: center;
     text-align: center;
-    height: 70px;
+    height: 100px;
     color: white;
     background-size:cover;
     background-position: center;

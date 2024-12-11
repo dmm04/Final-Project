@@ -7,7 +7,9 @@
 <body>
     <!--Hero Section -->
     <section class="hero" style="background-image: url('basket.jpg');">
-        
+    
+    
+    <a href="shop.html">Shop Now</a>
         
             
         </div>
