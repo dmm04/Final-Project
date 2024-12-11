@@ -15,7 +15,7 @@
         </nav>
         <button class ="cta-button">Shop Now</button>
     </div>    
-    <img src = "logo.jpg">
+    <img src = "logo.jpg" alt="Our Logo" style="justify-content: center; display: block; margin: auto;">
 
     <!--Featured Products-->
     <section class="featured-products">
