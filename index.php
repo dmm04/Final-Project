@@ -5,23 +5,16 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <!-- Hero Section -->
-    <section class="hero">
-        <nav class="navbar">
-            <div class="logo">Jamit! Baskets</div>
-            <ul class="nav-links">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="shop.html">Shop</a></li>
-            </ul>
+    <div class="hero">
+        <h1>Welcome to Jamit! Baskets</h1>
+        <p>Explore our beatifully handcrafted baskets designed with care and creativity. Find the perfect basket for any occasion</p>
+        <nav class="nav">
+            <a href="#home">Home</a>
+            <a href="#shop">Shop</a>
+            <a href="#about">About</a>
         </nav>
-        <div class="hero-content">
-            <h1>Welcome to Jamit! Baskets</h1>
-            <p>Unique Handmade Baskets for Every Occasion</p>
-            <a href="shop.html" class="cta-button">Shop Now</a>
-        </div>
-    </section>
-
+        <button class ="cta-button">Shop Now</button>
+    </div>    
     <img src = "logo.jpg">
 
     <!--Featured Products-->
