@@ -15,17 +15,18 @@
         <?php 
         // Connect to the database 
         $conn = new mysqli('localhost', 'username', 'password', 'database'); 
-        // Check the connection if ($conn->connect_error) { 
+        // Check the connection if ($conn->connect_error) 
+        { 
             die("Connection failed: " . $conn->connect_error);
+
         } 
         
         // Fetch products from the database 
-        $sql = "SELECT id, name, price, image FROM products"; 
+        $sql = "SELECT id, name, price FROM products"; 
         $result = $conn->query($sql); 
         if ($result->num_rows > 0) { 
             while($row = $result->fetch_assoc()) { 
                 echo '<div class="product-item">'; 
-                echo '<img src="' . $row["image"] . '" alt="' . $row["name"] . '">'; 
                 echo '<h3>' . $row["name"] . '</h3>'; 
                 echo '<p>$' . $row["price"] . '</p>'; 
                 echo '<a href="add_to_cart.php?id=' . $row["id"] . '" class="button">Add to Cart</a>'; 
@@ -42,3 +43,94 @@
 
 </body>
 </html>
+
+<!--php for adding to cart-->
+<?php
+session_start();
+
+// Database connection
+$conn = new mysqli('localhost', 'username', 'password', 'database');
+
+// Check connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+
+// Get product ID from URL
+$product_id = intval($_GET['id']);
+
+// Check if cart session exists
+if (!isset($_SESSION['cart'])) {
+    $_SESSION['cart'] = array();
+}
+
+// Add product to cart
+if (!in_array($product_id, $_SESSION['cart'])) {
+    $_SESSION['cart'][] = $product_id;
+}
+
+// Redirect back to store page
+header('Location: store.php');
+$conn->close();
+exit();
+?>
+
+<!--php for removing from cart-->
+<?php
+session_start();
+
+// Get product ID from URL
+$product_id = intval($_GET['id']);
+
+// Check if cart session exists
+if (isset($_SESSION['cart'])) {
+    // Remove product from cart
+    if (($key = array_search($product_id, $_SESSION['cart'])) !== false) {
+        unset($_SESSION['cart'][$key]);
+    }
+}
+
+// Redirect back to store page
+header('Location: store.php');
+exit();
+?>
+
+
+<section class="cart">
+    <h2>Your Cart</h2>
+    <div class="cart-items">
+        <?php
+        if (isset($_SESSION['cart']) && count($_SESSION['cart']) > 0) {
+            // Connect to the database
+            $conn = new mysqli('localhost', 'username', 'password', 'database');
+
+            // Check connection
+            if ($conn->connect_error) {
+                die("Connection failed: " . $conn->connect_error);
+            }
+
+            // Fetch cart items from the database
+            $ids = implode(',', array_map('intval', $_SESSION['cart']));
+            $sql = "SELECT id, name, price FROM products WHERE id IN ($ids)";
+            $result = $conn->query($sql);
+
+            if ($result->num_rows > 0) {
+                while ($row = $result->fetch_assoc()) {
+                    echo '<div class="cart-item">';
+                    echo '<h3>' . $row["name"] . '</h3>';
+                    echo '<p>$' . $row["price"] . '</p>';
+                    echo '<a href="remove_from_cart.php?id=' . $row["id"] . '" class="button">Remove</a>';
+                    echo '</div>';
+                }
+            } else {
+                echo "Your cart is empty.";
+            }
+            $conn->close();
+        } else {
+            echo "Your cart is empty.";
+        }
+        ?>
+    </div>
+</section>
+
+
