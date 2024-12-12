@@ -74,6 +74,8 @@ if (isset($_POST['add_to_cart'])) {
      <a href="cart.php" style="display: inline-block; padding: 15px 30px; font-size: 1.2em; background-color: #ffcc00; color: #0056b3; text-decoration: none; border-radius: 5px;">My Cart</a>
     </div>
 
+    
+
     <main>
         <section class="shop">
             <h1>Shop Our Baskets</h1>
