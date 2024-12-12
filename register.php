@@ -15,7 +15,7 @@ try {
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $username = htmlspecialchars($_POST['username']);
     $email = htmlspecialchars($_POST['email']);
-    $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
+    $password = password_hash($_POST['password'], PASSWORD_DEFAULT); // Hash the password
 
     try {
         $query = "INSERT INTO users (username, email, password) VALUES (:username, :email, :password)";

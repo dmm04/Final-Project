@@ -1,7 +1,9 @@
 <?php
 session_start();
+
+// Database connection
 $host = 'localhost';
-$dbname = 'final';
+$dbname = 'final'; 
 $username = 'root'; 
 $password = 'mysql'; 
 
@@ -12,23 +14,35 @@ try {
     die("Database connection failed: " . $e->getMessage());
 }
 
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $email = htmlspecialchars($_POST['email']);
     $password = $_POST['password'];
 
+    // Fetch user from the database
     $query = "SELECT * FROM users WHERE email = :email";
     $stmt = $pdo->prepare($query);
-    $stmt->bindParam(':email', $email);
+    $stmt->bindParam(':email', $email, PDO::PARAM_STR);
     $stmt->execute();
     $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
-    if ($user && password_verify($password, $user['password'])) {
-        $_SESSION['user_id'] = $user['id'];
-        $_SESSION['username'] = $user['username'];
-        header('Location: index.php');
-        exit;
+    if ($user) {
+        // Debug: Output fetched hashed password and user data
+        echo "Fetched Hashed Password: " . $user['password'] . "<br>";
+        echo "Input Password: " . $password . "<br>";
+
+        // Verify password
+        if (password_verify($password, $user['password'])) {
+            echo "Password is valid!";
+            // Set session and redirect
+            $_SESSION['user_id'] = $user['id'];
+            $_SESSION['username'] = $user['username'];
+            header('Location: index.php');
+            exit;
+        } else {
+            echo "Password is invalid!";
+        }
     } else {
-        $_SESSION['error'] = "Invalid email or password.";
+        echo "No user found with this email!";
     }
 }
 ?>
