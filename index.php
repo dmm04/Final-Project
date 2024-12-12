@@ -11,7 +11,7 @@
     <a href="#shop" style="display: inline-block; padding: 15px 30px; font-size: 1.2em; background-color: #ffcc00; color: #0056b3; text-decoration: none; border-radius: 5px;">Shop Now</a>
     <a href="#about" style="display: inline-block; padding: 15px 30px; font-size: 1.2em; background-color: #ffcc00; color: #0056b3; text-decoration: none; border-radius: 5px;">About Us</a>    
 </div>
-    
+     
     <img src = "logo.jpg" alt="Our Logo" style="justify-content: center; display: block; margin: auto; ">
 
     <!--Featured Products-->
