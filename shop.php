@@ -14,7 +14,7 @@
         <div class="product-grid">
         <?php 
         // Connect to the database 
-        $conn = new mysqli('localhost', 'username', 'password', 'database'); 
+        $conn = new mysqli('localhost', 'dylan', 'dylan', 'final'); 
         // Check the connection if ($conn->connect_error) 
         { 
             die("Connection failed: " . $conn->connect_error);
@@ -49,7 +49,7 @@
 session_start();
 
 // Database connection
-$conn = new mysqli('localhost', 'username', 'password', 'database');
+$conn = new mysqli('localhost', 'dylan', 'dylan', 'final');
 
 // Check connection
 if ($conn->connect_error) {
@@ -102,7 +102,7 @@ exit();
         <?php
         if (isset($_SESSION['cart']) && count($_SESSION['cart']) > 0) {
             // Connect to the database
-            $conn = new mysqli('localhost', 'username', 'password', 'database');
+            $conn = new mysqli('localhost', 'dylan', 'dylan', 'final');
 
             // Check connection
             if ($conn->connect_error) {
