@@ -25,13 +25,13 @@
                 <a href="#" class="button"> View Details </a>
             </div>
             <div class="product-item">
-                <img src="basket1.jpg" alt="Basket 1">
+                <img src="basket2.jpg" alt="Basket 1">
                 <h3>Basket 1</h3>
                 <p>$30.00</p>
                 <a href="#" class="button"> View Details </a>
             </div>
             <div class="product-item">
-                <img src="basket1.jpg" alt="Basket 1">
+                <img src="basket3.jpg" alt="Basket 1">
                 <h3>Basket 1</h3>
                 <p>$35.00</p>
                 <a href="#" class="button"> View Details </a>
