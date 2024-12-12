@@ -1,4 +1,14 @@
 <?php
+session_start();
+
+// Check if the user is logged in
+if (!isset($_SESSION['user_id'])) {
+    header('Location: login.php');
+    exit;
+}
+?>
+
+<?php
 // Start session for cart functionality
 session_start();
 

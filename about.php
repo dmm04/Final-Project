@@ -1,3 +1,13 @@
+<?php
+session_start();
+
+// Check if the user is logged in
+if (!isset($_SESSION['user_id'])) {
+    header('Location: login.php');
+    exit;
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,21 +17,21 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <header>
-        <nav>
-            <a href="index.php">Home</a>
-            <a href="about.php">About</a>
-            <a href="shop.php">Shop</a>
-            <a href="cart.php">Cart</a>
-        </nav>
-    </header>
+<div style="border: 2px solid transparent; background-color: #0056b3; text-align: center; padding: 50px; color: white;"> 
+     <a href="index.php" style="display: inline-block; padding: 15px 30px; font-size: 1.2em; background-color: #ffcc00; color: #0056b3; text-decoration: none; border-radius: 5px;">Home</a>
+     <a href="shop.php" style="display: inline-block; padding: 15px 30px; font-size: 1.2em; background-color: #ffcc00; color: #0056b3; text-decoration: none; border-radius: 5px;">Shop Now</a>
+     <a href="about.php" style="display: inline-block; padding: 15px 30px; font-size: 1.2em; background-color: #ffcc00; color: #0056b3; text-decoration: none; border-radius: 5px;">About Us</a>
+     <a href="cart.php" style="display: inline-block; padding: 15px 30px; font-size: 1.2em; background-color: #ffcc00; color: #0056b3; text-decoration: none; border-radius: 5px;">My Cart</a>
+    </div>
+
+
 
     <main>
         <!-- About Section -->
         <section class="about">
             <h1>About Jamit! Baskets</h1>
             <p>At Jamit! Baskets, we are passionate about creating handmade, high-quality baskets for every occasion. Whether you're looking for a gift, home decor, or a functional piece, our baskets are designed to combine beauty and utility.</p>
-            <p>Founded in 2024, we have been crafting baskets with love and care, ensuring every piece is unique and durable. Our mission is to bring joy and charm into your homes with our carefully curated collection.</p>
+            <p>Founded in 1994, we have been crafting baskets with love and care, ensuring every piece is unique and durable. Our mission is to bring joy and charm into your homes with our carefully curated collection.</p>
         </section>
 
         <!-- Contact Section -->

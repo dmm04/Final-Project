@@ -1,6 +1,16 @@
 <?php
 session_start();
 
+// Check if the user is logged in
+if (!isset($_SESSION['user_id'])) {
+    header('Location: login.php');
+    exit;
+}
+?>
+
+<?php
+session_start();
+
 // Remove an item from the cart
 if (isset($_POST['remove_item'])) {
     $productId = $_POST['product_id'];

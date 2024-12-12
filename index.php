@@ -1,3 +1,13 @@
+<?php
+session_start();
+
+// Check if the user is logged in
+if (!isset($_SESSION['user_id'])) {
+    header('Location: login.php');
+    exit;
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,10 +19,10 @@
     <h1 style="font-size: 3em; margin-bottom: 20px;">Welcome to Jamit! Baskets</h1> 
     <p style="font-size: 1.5em; margin-bottom: 30px;">Explore our beautifully handcrafted baskets designed with care and creativity. Find the perfect basket for any occasion.</p> 
     <a href="shop.php" style="display: inline-block; padding: 15px 30px; font-size: 1.2em; background-color: #ffcc00; color: #0056b3; text-decoration: none; border-radius: 5px;">Shop Now</a>
-    <a href="#about" style="display: inline-block; padding: 15px 30px; font-size: 1.2em; background-color: #ffcc00; color: #0056b3; text-decoration: none; border-radius: 5px;">About Us</a>    
+    <a href="about.php" style="display: inline-block; padding: 15px 30px; font-size: 1.2em; background-color: #ffcc00; color: #0056b3; text-decoration: none; border-radius: 5px;">About Us</a>    
 </div>
      
-    <img src = "logo.jpg" alt="Our Logo" style="justify-content: center; display: block; margin: auto; ">
+    <img src = "images/logo.jpg" alt="Our Logo" style="justify-content: center; display: block; margin: auto; ">
 
     <!--Featured Products-->
     <section class="featured-products">
