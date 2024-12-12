@@ -1,39 +1,26 @@
 <?php
 session_start();
 
-// Database configuration
-$servername = "localhost";
-$username = "root"; 
-$password = "mysql"; 
-$dbname = "final";
-
-// Create connection
-$conn = new mysqli($servername, $username, $password, $dbname);
-
-// Check connection
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
-
-// Initialize the cart if not already set
-if (!isset($_SESSION['cart'])) {
-    $_SESSION['cart'] = [];
-}
-
-// Handle Add to Cart action
-if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['add_to_cart'])) {
-    $product_id = intval($_POST['product_id']);
-    if (isset($_SESSION['cart'][$product_id])) {
-        $_SESSION['cart'][$product_id] += 1;
-    } else {
-        $_SESSION['cart'][$product_id] = 1;
+// Remove an item from the cart
+if (isset($_POST['remove_item'])) {
+    $productId = $_POST['product_id'];
+    foreach ($_SESSION['cart'] as $key => $cartItem) {
+        if ($cartItem['id'] == $productId) {
+            unset($_SESSION['cart'][$key]);
+            break;
+        }
     }
-    echo "<p>Product added to cart successfully!</p>";
+    $_SESSION['cart'] = array_values($_SESSION['cart']); // Reindex array
+    header("Location: cart.php");
+    exit;
 }
 
-// Fetch products
-$sql = "SELECT id, name, price, image FROM products";
-$result = $conn->query($sql);
+// Clear the cart
+if (isset($_POST['clear_cart'])) {
+    unset($_SESSION['cart']);
+    header("Location: cart.php");
+    exit;
+}
 ?>
 
 <!DOCTYPE html>
@@ -41,19 +28,23 @@ $result = $conn->query($sql);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jamit! Baskets - Cart</title>
+    <title>Cart - Jamit! Baskets</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <header class="store-header">
-        <h1>Your Cart</h1>
+    <header>
         <nav>
-            <a href="shop.php">Continue Shopping</a>
+            <a href="index.php">Home</a>
+            <a href="about.php">About</a>
+            <a href="shop.php">Shop</a>
+            <a href="cart.php">Cart</a>
         </nav>
     </header>
+
     <main>
-        <section class="cart-section">
-            <?php if (!empty($cart_items)): ?>
+        <section class="cart">
+            <h1>Your Cart</h1>
+            <?php if (isset($_SESSION['cart']) && count($_SESSION['cart']) > 0): ?>
                 <table>
                     <thead>
                         <tr>
@@ -61,37 +52,33 @@ $result = $conn->query($sql);
                             <th>Price</th>
                             <th>Quantity</th>
                             <th>Total</th>
+                            <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <?php
-                        $grand_total = 0;
-                        foreach ($cart_items as $product_id => $quantity):
-                            $product = $product_list[$product_id];
-                            $total = $product['price'] * $quantity;
-                            $grand_total += $total;
-                        ?>
+                        <?php foreach ($_SESSION['cart'] as $cartItem): ?>
                             <tr>
-                                <td><?php echo $product['name']; ?></td>
-                                <td>$<?php echo number_format($product['price'], 2); ?></td>
-                                <td><?php echo $quantity; ?></td>
-                                <td>$<?php echo number_format($total, 2); ?></td>
+                                <td><?= htmlspecialchars($cartItem['name']) ?></td>
+                                <td>$<?= number_format($cartItem['price'], 2) ?></td>
+                                <td><?= $cartItem['quantity'] ?></td>
+                                <td>$<?= number_format($cartItem['price'] * $cartItem['quantity'], 2) ?></td>
+                                <td>
+                                    <form method="POST">
+                                        <input type="hidden" name="product_id" value="<?= $cartItem['id'] ?>">
+                                        <button type="submit" name="remove_item">Remove</button>
+                                    </form>
+                                </td>
                             </tr>
                         <?php endforeach; ?>
                     </tbody>
                 </table>
-                <h3>Grand Total: $<?php echo number_format($grand_total, 2); ?></h3>
+                <form method="POST" class="clear-cart">
+                    <button type="submit" name="clear_cart">Clear Cart</button>
+                </form>
             <?php else: ?>
                 <p>Your cart is empty.</p>
             <?php endif; ?>
         </section>
     </main>
-    <footer class="store-footer">
-        <p>&copy; 2024 Jamit! Baskets. All rights reserved.</p>
-    </footer>
 </body>
 </html>
-
-<?php
-$conn->close();
-?>

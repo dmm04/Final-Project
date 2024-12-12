@@ -1,39 +1,60 @@
 <?php
+// Start session for cart functionality
 session_start();
 
-// Database configuration
-$servername = "localhost";
-$username = "root"; 
-$password = "mysql"; 
-$dbname = "final";
+// Database connection
+$host = 'localhost';
+$dbname = 'final';
+$username = 'root'; 
+$password = 'mysql'; 
 
-// Create connection
-$conn = new mysqli($servername, $username, $password, $dbname);
-
-// Check connection
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
+try {
+    $pdo = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);
+    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+} catch (PDOException $e) {
+    die("Database connection failed: " . $e->getMessage());
 }
 
-// Initialize the cart if not already set
-if (!isset($_SESSION['cart'])) {
-    $_SESSION['cart'] = [];
-}
+// Fetch products from the database
+$query = "SELECT * FROM products";
+$stmt = $pdo->query($query);
+$products = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-// Handle Add to Cart action
-if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['add_to_cart'])) {
-    $product_id = intval($_POST['product_id']);
-    if (isset($_SESSION['cart'][$product_id])) {
-        $_SESSION['cart'][$product_id] += 1;
-    } else {
-        $_SESSION['cart'][$product_id] = 1;
+// Add to cart functionality
+if (isset($_POST['add_to_cart'])) {
+    $productId = $_POST['product_id'];
+    $productName = $_POST['product_name'];
+    $productPrice = $_POST['product_price'];
+
+    // Add product to session cart
+    if (!isset($_SESSION['cart'])) {
+        $_SESSION['cart'] = [];
     }
-    echo "<p>Product added to cart successfully!</p>";
-}
 
-// Fetch products
-$sql = "SELECT id, name, price, image FROM products";
-$result = $conn->query($sql);
+    // Check if the product is already in the cart
+    $isInCart = false;
+    foreach ($_SESSION['cart'] as &$cartItem) {
+        if ($cartItem['id'] == $productId) {
+            $cartItem['quantity'] += 1;
+            $isInCart = true;
+            break;
+        }
+    }
+
+    // If not in cart, add it as a new item
+    if (!$isInCart) {
+        $_SESSION['cart'][] = [
+            'id' => $productId,
+            'name' => $productName,
+            'price' => $productPrice,
+            'quantity' => 1
+        ];
+    }
+
+    // Redirect to prevent form resubmission
+    header("Location: shop.php");
+    exit;
+}
 ?>
 
 <!DOCTYPE html>
@@ -41,50 +62,38 @@ $result = $conn->query($sql);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jamit! Baskets - Store</title>
+    <title>Shop - Jamit! Baskets</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-<div style="border: 2px solid transparent; background-color: #0056b3; text-align: center; padding: 50px; color: white;"> 
-     <a href="index.php" style="display: inline-block; padding: 15px 30px; font-size: 1.2em; background-color: #ffcc00; color: #0056b3; text-decoration: none; border-radius: 5px;">Home</a>
-     <a href="shop.php" style="display: inline-block; padding: 15px 30px; font-size: 1.2em; background-color: #ffcc00; color: #0056b3; text-decoration: none; border-radius: 5px;">Shop Now</a>
-     <a href="about.php" style="display: inline-block; padding: 15px 30px; font-size: 1.2em; background-color: #ffcc00; color: #0056b3; text-decoration: none; border-radius: 5px;">About Us</a>
-    </div>
-    <header class="store-header">
-        <h1>Jamit! Baskets Store</h1>
+    <header>
         <nav>
-            <a href="shop.php">Home</a>
-            <a href="cart.php">View Cart (<?php echo array_sum($_SESSION['cart']); ?>)</a>
+            <a href="index.php">Home</a>
+            <a href="about.php">About</a>
+            <a href="shop.php">Shop</a>
+            <a href="cart.php">Cart</a>
         </nav>
     </header>
+
     <main>
-        <section class="product-grid">
-            <?php
-            if ($result->num_rows > 0) {
-                while ($row = $result->fetch_assoc()) {
-                    echo "
-                    <div class='product-card'>
-                        <img src='" . $row['image'] . "' alt='" . $row['name'] . "' class='product-image'>
-                        <h2 class='product-name'>" . $row['name'] . "</h2>
-                        <p class='product-price'>$" . number_format($row['price'], 2) . "</p>
-                        <form method='POST' action='store.php'>
-                            <input type='hidden' name='product_id' value='" . $row['id'] . "'>
-                            <button type='submit' name='add_to_cart' class='add-to-cart'>Add to Cart</button>
+        <section class="shop">
+            <h1>Shop Our Baskets</h1>
+            <div class="products">
+                <?php foreach ($products as $product): ?>
+                    <div class="product">
+                        <img src="<?= htmlspecialchars($product['image']) ?>" alt="<?= htmlspecialchars($product['name']) ?>">
+                        <h3><?= htmlspecialchars($product['name']) ?></h3>
+                        <p>$<?= number_format($product['price'], 2) ?></p>
+                        <form method="POST">
+                            <input type="hidden" name="product_id" value="<?= $product['id'] ?>">
+                            <input type="hidden" name="product_name" value="<?= htmlspecialchars($product['name']) ?>">
+                            <input type="hidden" name="product_price" value="<?= $product['price'] ?>">
+                            <button type="submit" name="add_to_cart">Add to Cart</button>
                         </form>
-                    </div>";
-                }
-            } else {
-                echo "<p>No products available.</p>";
-            }
-            ?>
+                    </div>
+                <?php endforeach; ?>
+            </div>
         </section>
     </main>
-    <footer class="store-footer">
-        <p>&copy; 2024 Jamit! Baskets. All rights reserved.</p>
-    </footer>
 </body>
 </html>
-
-<?php
-$conn->close();
-?>
