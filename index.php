@@ -5,15 +5,16 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="hero">
+    <div style="border: 2px solid transparent; background-color: #0056b3;">
         <h1>Welcome to Jamit! Baskets</h1>
         <p>Explore our beatifully handcrafted baskets designed with care and creativity. Find the perfect basket for any occasion</p>
-        <nav>
             <a href="#home">Home</a>
             <a href="#shop">Shop</a>
             <a href="#about">About</a>
+            <hr>
+        <nav>
+            
         </nav>
-        <button class ="cta-button">Shop Now</button>
     </div>    
     <img src = "logo.jpg" alt="Our Logo" style="justify-content: center; display: block; margin: auto; ">
 
