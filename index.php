@@ -19,22 +19,22 @@
         <h2>Featured Baskets</h2>
         <div class="product-grid">
             <div class="product-item">
-                <img src="basket1.jpg" alt="Antler Rib Greys">
+                
                 <h3>Antler Rib Greys</h3>
                 <p>$25.00</p>
-                <a href="#" class="button"> View Details </a>
+                <a href="shop.php" class="button"> View Details </a>
             </div>
             <div class="product-item">
-                <img src="basket2.jpg" alt="Oval Woodbase">
+                
                 <h3>Oval Woodbase</h3>
                 <p>$30.00</p>
-                <a href="#" class="button"> View Details </a>
+                <a href="shop.php" class="button"> View Details </a>
             </div>
             <div class="product-item">
-                <img src="basket3.jpg" alt="Blacksmith">
+                
                 <h3>Blacksmith</h3>
                 <p>$35.00</p>
-                <a href="#" class="button"> View Details </a>
+                <a href="shop.php" class="button"> View Details </a>
             </div>
         </div>
     </section>
