@@ -8,7 +8,7 @@
 <div style="border: 2px solid transparent; background-color: #0056b3; text-align: center; padding: 50px; color: white;"> 
     <h1 style="font-size: 3em; margin-bottom: 20px;">Welcome to Jamit! Baskets</h1> 
     <p style="font-size: 1.5em; margin-bottom: 30px;">Explore our beautifully handcrafted baskets designed with care and creativity. Find the perfect basket for any occasion.</p> 
-    <a href="#shop" style="display: inline-block; padding: 15px 30px; font-size: 1.2em; background-color: #ffcc00; color: #0056b3; text-decoration: none; border-radius: 5px;">Shop Now</a>
+    <a href="shop.php" style="display: inline-block; padding: 15px 30px; font-size: 1.2em; background-color: #ffcc00; color: #0056b3; text-decoration: none; border-radius: 5px;">Shop Now</a>
     <a href="#about" style="display: inline-block; padding: 15px 30px; font-size: 1.2em; background-color: #ffcc00; color: #0056b3; text-decoration: none; border-radius: 5px;">About Us</a>    
 </div>
      
