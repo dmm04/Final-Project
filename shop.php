@@ -1,17 +1,10 @@
-<html lang="en">
-<head>
-    <title>Store Page</title>
-    <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-
 
 
 <?php
 // Database connection
 $host = 'localhost';
-$username = 'dylan';
-$password = 'dylan'; 
+$username = 'root';
+$password = 'mysql'; 
 $database = 'final';
 
 // Connect to the database
