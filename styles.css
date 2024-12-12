@@ -305,3 +305,65 @@ footer {
     color: #555;
     margin-top: 20px;
 }
+
+.about {
+    padding: 40px;
+    background-color: #f9f9f9;
+    text-align: center;
+}
+
+.about h1 {
+    color: #007bff;
+    margin-bottom: 20px;
+}
+
+.about p {
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+    line-height: 1.8;
+}
+
+.contact {
+    padding: 40px;
+    background-color: #fff;
+    text-align: center;
+}
+
+.contact h2 {
+    color: #007bff;
+    margin-bottom: 20px;
+}
+.contact-form {
+    max-width: 600px;
+    margin: 0 auto;
+    text-align: left;
+}
+
+.contact-form label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+}
+
+.contact-form input,
+.contact-form textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.contact-form button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+.contact-form button:hover {
+    background-color: #0056b3;
+}

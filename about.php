@@ -48,3 +48,27 @@
     </footer>
 </body>
 </html>
+
+<?php
+if ($_SERVER["REQUEST_METHOD"] === "POST") {
+    $name = htmlspecialchars($_POST['name']);
+    $email = htmlspecialchars($_POST['email']);
+    $message = htmlspecialchars($_POST['message']);
+
+    // Example: Save to database (requires a `contacts` table)
+    try {
+        $pdo = new PDO("mysql:host=localhost;dbname=final", "root", "");
+        $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+        $query = "INSERT INTO contacts (name, email, message) VALUES (:name, :email, :message)";
+        $stmt = $pdo->prepare($query);
+        $stmt->bindParam(':name', $name);
+        $stmt->bindParam(':email', $email);
+        $stmt->bindParam(':message', $message);
+        $stmt->execute();
+
+        echo "Thank you for reaching out! We will get back to you soon.";
+    } catch (PDOException $e) {
+        echo "Error: " . $e->getMessage();
+    }
+}
