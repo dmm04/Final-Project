@@ -80,7 +80,7 @@ if (isset($_POST['add_to_cart'])) {
             <div class="products">
                 <?php foreach ($products as $product): ?>
                     <div class="product">
-                        <img src="<?= htmlspecialchars($product['image']) ?>" alt="<?= htmlspecialchars($product['name']) ?>">
+                    <img src="<?= htmlspecialchars($product['image']) ?>" alt="<?= htmlspecialchars($product['name']) ?>">
                         <h3><?= htmlspecialchars($product['name']) ?></h3>
                         <p>$<?= number_format($product['price'], 2) ?></p>
                         <form method="POST">
