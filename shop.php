@@ -53,7 +53,7 @@ $result = $conn->query($sql);
     <header class="store-header">
         <h1>Jamit! Baskets Store</h1>
         <nav>
-            <a href="store.php">Home</a>
+            <a href="shop.php">Home</a>
             <a href="cart.php">View Cart (<?php echo array_sum($_SESSION['cart']); ?>)</a>
         </nav>
     </header>
